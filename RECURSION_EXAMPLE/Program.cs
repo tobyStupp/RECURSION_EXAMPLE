@@ -136,9 +136,16 @@ namespace RECURSION_EXAMPLE
                 Console.Write($"{ar[i]}, ");
             Console.WriteLine(ar[ar.Length - 1]);
         }
-        static int Find (int [] ar, int start, int end)
+        static int Find (int [] ar, int start, int end , int x)
         {
-
+            if (end< start)
+                return -1;
+            int mid = (start + end) / 2;
+            if (ar[mid] == x)
+                return mid;
+            if (ar[mid] > x)
+                return Find(ar, start, mid - 1, x);
+            return Find(ar, mid + 1, end, x);
         }
 
         static void Main(string[] args)
